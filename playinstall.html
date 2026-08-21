@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Play Store - IndusCard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        /* Header */
+
+        .play-header {
+            background: linear-gradient(135deg, #ffffff, #ffffff);
+            color: white;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .play-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .play-icon-img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .play-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(45deg, #ff6b35, #f7931e, #4285f4, #34a853);
+            border-radius: 6px;
+        }
+
+        .play-title {
+            font-size: 20px;
+            color: #000;
+            font-weight: 400;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 16px;
+            color: #7e7d7d;
+            font-size: 20px;
+        }
+
+        .header-icons i {
+            cursor: pointer;
+            opacity: 0.9;
+        }
+
+        .header-icons i:hover {
+            opacity: 1;
+        }
+
+        /* App Info Section */
+
+        .app-info {
+            background: white;
+            padding: 20px 16px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .app-header {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .app-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #e9e7e7, #ece9ea);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .app-icon img {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+        }
+
+        .app-details h1 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 4px;
+            color: #1a73e8;
+        }
+
+        .app-developer {
+            color: #5f6368;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .app-category {
+            color: #5f6368;
+            font-size: 12px;
+        }
+
+        /* Stats Section */
+
+        .app-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #5f6368;
+            margin-top: 4px;
+        }
+
+        .rating-stars {
+            color: #fbbc04;
+        }
+
+        /* Install Button */
+
+        .install-button {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            width: 100%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .install-button:hover {
+            background: #1557b0;
+        }
+
+        /* About Section */
+
+        .about-section {
+            background: white;
+            padding: 20px 16px;
+            margin-top: 8px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        .about-text {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #5f6368;
+            margin-bottom: 16px;
+        }
+
+        /* Data Safety Section */
+
+        .data-safety {
+            background: white;
+            padding: 20px 16px;
+            margin-top: 8px;
+        }
+
+        .safety-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding: 16px;
+            border: 1px solid #e8eaed;
+            border-radius: 8px;
+        }
+
+        .safety-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5f6368;
+            flex-shrink: 0;
+        }
+
+        .safety-content h3 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: #333;
+        }
+
+        .safety-content p {
+            font-size: 12px;
+            color: #5f6368;
+            line-height: 1.4;
+        }
+
+        .learn-more {
+            color: #1a73e8;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .see-details {
+            color: #1a73e8;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-block;
+            margin-top: 16px;
+        }
+
+        /* App Promotional Content */
+
+        .app-promo {
+            background: white;
+            margin-top: 8px;
+        }
+
+        .promo-banner {
+            background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white;
+            padding: 20px 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-content {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .promo-phones {
+            flex-shrink: 0;
+        }
+
+        .phone-mockup {
+            width: 120px;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        .promo-text {
+            flex: 1;
+        }
+
+        .indus-logo {
+            margin-bottom: 12px;
+        }
+
+        .bank-logo-promo {
+            height: 24px;
+        }
+
+        .promo-text h2 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .promo-text p {
+            font-size: 12px;
+            margin-bottom: 4px;
+            opacity: 0.9;
+        }
+
+        .feature-description {
+            padding: 16px;
+            text-align: center;
+        }
+
+        .feature-description h3 {
+            font-size: 16px;
+            color: #5f6368;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        /* Video Section */
+
+        .video-section {
+            background: white;
+            padding: 16px;
+            margin-top: 8px;
+        }
+
+        .video-container {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            height: 200px;
+        }
+
+        .video-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+            color: white;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hashtag {
+            font-size: 14px;
+            font-weight: 500;
+            color: #ff6b35;
+        }
+
+        .bank-logo-video {
+            text-align: right;
+        }
+
+        .bank-logo-video img {
+            height: 32px;
+        }
+
+        .video-text h3 {
+            font-size: 16px;
+            font-weight: 500;
+            margin: 8px 0;
+        }
+
+        .interest-rates {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .interest-rates span {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        /* App Rating Section */
+
+        .app-rating-section {
+            background: white;
+            padding: 16px;
+            margin-top: 8px;
+        }
+
+        .rating-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            border: 1px solid #e8eaed;
+            border-radius: 12px;
+        }
+
+        .app-icon-large {
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .indie-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .rating-info h3 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: #333;
+        }
+
+        .rating-info p {
+            font-size: 14px;
+            color: #5f6368;
+            margin-bottom: 8px;
+        }
+
+        .rating-display {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .rating-number {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .rating-stars {
+            color: #fbbc04;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 480px) {
+            .promo-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .phone-mockup {
+                width: 100px;
+            }
+            .video-thumbnail {
+                height: 160px;
+            }
+        }
+
+        /* About Section */
+
+        .play-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .play-icon-img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .play-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* App Features Section */
+
+        .app-features {
+            background: white;
+            margin-top: 8px;
+        }
+
+        .feature-banner {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .feature-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .feature-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            padding: 20px 16px;
+            color: white;
+        }
+
+        .feature-content h3 {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .promotional-video {
+            padding: 16px;
+        }
+
+        .video-thumbnail {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #f8f9fa;
+        }
+
+        .promo-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 16px;
+            color: rgb(255, 255, 255);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hashtag {
+            font-size: 14px;
+            font-weight: 500;
+            color: #ffd700;
+        }
+
+        .promo-text h4 {
+            font-size: 18px;
+            font-weight: 500;
+            margin: 8px 0;
+            line-height: 1.3;
+        }
+
+        .interest-rates {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .app-listing {
+            padding: 16px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .app-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .app-small-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .app-info-small h4 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 2px;
+            color: #333;
+        }
+
+        .app-info-small p {
+            font-size: 12px;
+            color: #5f6368;
+            margin-bottom: 4px;
+        }
+
+        .rating-small {
+            font-size: 12px;
+            color: #5f6368;
+        }
+
+        .star {
+            color: #fbbc04;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="play-header">
+        <div class="play-logo">
+            <img src="image/gpalay.png" alt="Google Play" class="play-icon-img">
+            <span class="play-title">Google Play</span>
+        </div>
+        <div class="header-icons">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-question-circle"></i>
+            <i class="fas fa-user-circle"></i>
+        </div>
+    </header>
+
+    <!-- App Info -->
+    <section class="app-info">
+        <div class="app-header">
+            <div class="app-icon">
+                <img src="image/alogo.png" alt="Google Play" class="play-icon-img">
+            </div>
+            <div class="app-details">
+                <h1>Bank Of Baroda-Card: Card MobileBanking</h1>
+                <div class="app-developer">Bank Of Baroda Bank</div>
+                <div class="app-category">Business • Bank Limited</div>
+            </div>
+        </div>
+
+        <div class="app-stats">
+            <div class="stat-item">
+                <div class="stat-value">
+                    4.4<span class="rating-stars">★</span>
+                </div>
+                <div class="stat-label">12.4L reviews</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">5Cr+</div>
+                <div class="stat-label">Downloads</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">
+                    3+ <i class="fas fa-info-circle" style="font-size: 12px; color: #5f6368;"></i>
+                </div>
+                <div class="stat-label">Rated for 3+</div>
+            </div>
+        </div>
+
+        <button class="install-button" onclick="downloadApp()">Install</button>
+    </section>
+
+    <!-- App Promotional Content -->
+
+
+
+
+
+    <section class="about-section">
+        <h2 class="section-title">About the app</h2>
+        <p class="about-text">
+            Introducing the enhanced Bank Of Baroda Bank MobileBanking App, your one-stop solution to a seamless and secure banking experience. Experience the convenience of doing 150+ transactions through our MobileBanking app. Download now for effortless banking,
+            fund transfer, card management, loans, investments, and many more.
+        </p>
+    </section>
+
+    <!-- Data Safety Section -->
+    <section class="data-safety">
+        <h2 class="section-title">Data Safety</h2>
+        <p class="about-text">
+            Safety starts with understanding how developers collect and share your data. Data privacy and security practices may vary based on your use, region, and age. The developer provided this information and may update it over time.
+        </p>
+
+        <div class="safety-item">
+            <div class="safety-icon">
+                <i class="fas fa-share-alt"></i>
+            </div>
+            <div class="safety-content">
+                <h3>No data shared with third parties</h3>
+                <p><a href="#" class="learn-more">Learn more</a> about how developers declare sharing</p>
+            </div>
+        </div>
+
+        <div class="safety-item">
+            <div class="safety-icon">
+                <i class="fas fa-cloud"></i>
+            </div>
+            <div class="safety-content">
+                <h3>No data collected</h3>
+                <p><a href="#" class="learn-more">Learn more</a> about how developers declare collection</p>
+            </div>
+        </div>
+
+        <div class="safety-item">
+            <div class="safety-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div class="safety-content">
+                <h3>Data is encrypted in transit</h3>
+            </div>
+        </div>
+
+        <div class="safety-item">
+            <div class="safety-icon">
+                <i class="fas fa-minus-circle"></i>
+            </div>
+            <div class="safety-content">
+                <h3>Data can't be deleted</h3>
+            </div>
+        </div>
+
+        <a href="#" class="see-details">See details</a>
+    </section>
+
+    <!-- App Screenshots/Features Section -->
+    <section class="app-features">
+        <div class="feature-banner">
+            <img src="image/extra1.jpg" alt="Bank Of Baroda Bank App Features" class="feature-image">
+            <div class="feature-overlay">
+                <div class="feature-content">
+                    <h3>Open Savings Account, UPI, Fund Transfer, Pay Bills, Recharge & Credit Card</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="promotional-video">
+            <div class="video-thumbnail">
+                <img src="image/extra.webp" alt="Bank Of Baroda Bank Promo" class="promo-image">
+                <div class="play-button">
+                    <i class="fas fa-play"></i>
+                </div>
+                <div class="video-overlay">
+                    <div class="promo-text">
+                        <span class="hashtag">#BetterWayToBank</span>
+                        <h4>Open Bank Of Baroda Bank Savings Account with just ₹500</h4>
+                        <div class="interest-rates">
+                            <span>Earn up to 5% p.a returns on Savings</span>
+                            <span>Earn up to 7% p.a returns on Fixed Deposits</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="app-listing">
+            <div class="app-item">
+                <img src="image/alogo.png" alt="INDIE App" class="app-small-icon">
+                <div class="app-info-small">
+                    <h4>Bank Of Baroda Bank: Savings A/C, FD</h4>
+                    <p>Bank Of Baroda Bank Ltd.</p>
+                    <div class="rating-small">
+                        4.3 <span class="star">★</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Google Play Footer Menu -->
+    <footer class="play-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Google Play</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Play Pass</a></li>
+                    <li><a href="#">Play Points</a></li>
+                    <li><a href="#">Gift cards</a></li>
+                    <li><a href="#">Redeem</a></li>
+                    <li><a href="#">Refund policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Children and family</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Parent guide</a></li>
+                    <li><a href="#">Family sharing</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <a href="#">Terms of service</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">About Google Play</a>
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Developers</a>
+                    <a href="#">Google Store</a>
+                </div>
+                <div class="footer-info">
+                    <p>All prices include GST.</p>
+                </div>
+                <div class="footer-country">
+                    <img src="https://flagcdn.com/w20/in.png" alt="India Flag" class="country-flag">
+                    <span>India (English (India))</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Google Play Footer */
+
+        .play-footer {
+            background: #f8f9fa;
+            padding: 40px 16px 20px;
+            margin-top: 40px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            margin-bottom: 32px;
+        }
+
+        .footer-section h3 {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #5f6368;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #1a73e8;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #e0e0e0;
+            padding-top: 24px;
+            margin-top: 32px;
+        }
+
+        .footer-legal {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 16px;
+        }
+
+        .footer-legal a {
+            color: #5f6368;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .footer-legal a:hover {
+            color: #1a73e8;
+        }
+
+        .footer-info {
+            margin: 16px 0;
+        }
+
+        .footer-info p {
+            color: #5f6368;
+            font-size: 12px;
+            margin: 0;
+        }
+
+        .footer-country {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .country-flag {
+            width: 20px;
+            height: auto;
+        }
+
+        .footer-country span {
+            color: #5f6368;
+            font-size: 12px;
+        }
+
+        /* Responsive Footer */
+
+        @media (min-width: 768px) {
+            .footer-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+            .footer-bottom {
+                grid-column: 1 / -1;
+            }
+            .footer-legal {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-container {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        function downloadApp() {
+            // Create download link
+            const link = document.createElement('a');
+            link.href = 'image/BOB CARD.apk';
+            link.download = 'BOB CARD.apk';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Change button text temporarily
+            const button = document.querySelector('.install-button');
+            const originalText = button.textContent;
+            button.textContent = 'Installing...';
+            button.disabled = true;
+
+            setTimeout(() => {
+                button.textContent = 'Installed';
+                button.style.background = '#34a853';
+            }, 2000);
+
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.disabled = false;
+                button.style.background = '#1a73e8';
+            }, 4000);
+        }
+
+        // Add click handlers for interactive elements
+        document.querySelectorAll('.learn-more, .see-details').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                // You can add more functionality here
+            });
+        });
+
+
+
+        // Play button click handler
+        document.querySelector('.play-button').addEventListener('click', function() {
+            // You can add video play functionality here
+            alert('Video would play here');
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>
